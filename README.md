@@ -1,4 +1,4 @@
-# PhishGuard - AI-Powered Phishing Detection Platform
+# Cyber Truth - AI-Powered Phishing Detection Platform
 
 > An advanced phishing detection system using Machine Learning and AI to protect users from email scams, malicious URLs, and fake websites in real-time.
 
@@ -11,7 +11,7 @@
 
 ## 📋 Overview
 
-PhishGuard is an intelligent cybersecurity platform designed to detect and neutralize phishing threats before they reach users. It combines:
+Cyber Truth is an intelligent cybersecurity platform designed to detect and neutralize phishing threats before they reach users. It combines:
 - **Machine Learning Models** for pattern recognition
 - **Real-time Threat Analysis** of URLs and emails
 - **Web Scanning** for malicious websites

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Cyber Truth – AI-powered phishing and threat detection platform for security analysts." />
+    <title>Cyber Truth – AI Threat Intelligence</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Tailwind CDN with custom theme -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'cyber-bg-dark': '#0B1120',
+              'cyber-bg-light': '#F8FAFC',
+              'cyber-primary': '#3B82F6',
+              'cyber-secondary': '#06B6D4',
+              'cyber-accent': '#22C55E',
+              'cyber-danger': '#EF4444',
+              'cyber-warning': '#F59E0B',
+              'cyber-dark':    '#0B1120',
+              'cyber-darker':  '#060b13',
+              'cyber-surface': 'rgba(15, 23, 42, 0.65)',
+              'cyber-border':  '#1e293b',
+              'cyber-glow':    '#3B82F6',
+              'threat-safe':       '#22C55E',
+              'threat-suspicious': '#F59E0B',
+              'threat-phishing':   '#EF4444',
+              'threat-unknown':    '#64748b',
+              'neon-blue':   '#3B82F6',
+              'neon-green':  '#22C55E',
+              'neon-red':    '#EF4444',
+              'neon-amber':  '#F59E0B',
+              'neon-purple': '#a855f7',
+            },
+            fontFamily: {
+              mono:    ['JetBrains Mono', 'Fira Code', 'monospace'],
+              display: ['Space Grotesk', 'Rajdhani', 'sans-serif'],
+              body:    ['Inter', 'Manrope', 'system-ui', 'sans-serif'],
+              poppins: ['Poppins', 'sans-serif'],
+            },
+            boxShadow: {
+              'glow-cyan':  '0 0 25px rgba(6, 182, 212, 0.35)',
+              'glow-blue':  '0 0 25px rgba(59, 130, 246, 0.35)',
+              'glow-red':   '0 0 25px rgba(239, 68, 68, 0.35)',
+              'glow-green': '0 0 25px rgba(34, 197, 94, 0.35)',
+              'glow-purple': '0 0 25px rgba(168, 85, 247, 0.35)',
+              'card':       '0 10px 30px -10px rgba(0, 0, 0, 0.7)',
+              'card-hover': '0 15px 40px -10px rgba(59, 130, 246, 0.2)',
+            },
+            backgroundImage: {
+              'cyber-grid': "linear-gradient(rgba(59, 130, 246, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.015) 1px, transparent 1px)",
+              'radial-cyber': 'radial-gradient(circle at 50% 50%, #0d1e3d 0%, #0B1120 100%)',
+            },
+            backgroundSize: {
+              'grid': '30px 30px',
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'scan-line':  'scanLine 3s linear infinite',
+              'border-glow': 'borderGlow 4s ease-in-out infinite',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%':   { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              scanLine: {
+                '0%':   { top: '-4px' },
+                '100%': { top: '100%' },
+              },
+              borderGlow: {
+                '0%, 100%': { 'box-shadow': '0 0 10px rgba(59, 130, 246, 0.2)' },
+                '50%':      { 'box-shadow': '0 0 30px rgba(59, 130, 246, 0.5)' },
+              },
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      .text-gradient-cyber {
+        background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .text-gradient-threat {
+        background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .text-glow-cyan { text-shadow: 0 0 20px rgba(6, 182, 212, 0.5); }
+      .text-glow-blue { text-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+      .text-glow-red  { text-shadow: 0 0 20px rgba(239, 68, 68, 0.5); }
+      .text-glow-green { text-shadow: 0 0 20px rgba(34, 197, 94, 0.5); }
+      ::-webkit-scrollbar { width: 5px; height: 5px; }
+      ::-webkit-scrollbar-track { background: #0B1120; }
+      .dark ::-webkit-scrollbar-track { background: #0B1120; }
+      ::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.2); border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.5); }
+
+      .btn-primary {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        padding: 0.75rem 1.5rem; border-radius: 6px;
+        background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+        color: #ffffff; font-family: 'Poppins', sans-serif; font-weight: 600;
+        letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.825rem;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        border: none; cursor: pointer;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+      }
+      .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 25px rgba(59, 130, 246, 0.45); }
+      .btn-primary:active { transform: translateY(1px); }
+      .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+      .btn-secondary {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        padding: 0.75rem 1.5rem; border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.08); color: #94a3b8;
+        font-family: 'Poppins', sans-serif; font-weight: 600;
+        letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.825rem;
+        background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(8px);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer;
+      }
+      .btn-secondary:hover { border-color: #3B82F6; color: #3B82F6; background: rgba(59, 130, 246, 0.05); box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); }
+      .btn-secondary:active { transform: scale(0.98); }
+      .btn-secondary:disabled { opacity: 0.3; cursor: not-allowed; }
+
+      .glass-card {
+        background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(16px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .glass-card-hover {
+        background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(16px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .glass-card-hover:hover { transform: translateY(-2px); border-color: rgba(59, 130, 246, 0.2); box-shadow: 0 15px 40px -10px rgba(59, 130, 246, 0.15); }
+
+      .input-cyber {
+        width: 100%; background: rgba(9, 13, 31, 0.7); border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 6px; padding: 0.75rem 1rem; color: #f8fafc;
+        font-family: 'JetBrains Mono', monospace; font-size: 0.825rem;
+        outline: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .input-cyber::placeholder { color: #475569; }
+      .input-cyber:focus { border-color: #3B82F6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.15); background: rgba(9, 13, 31, 0.9); }
+
+      .badge-safe {
+        display: inline-flex; align-items: center; gap: 0.25rem;
+        padding: 0.25rem 0.75rem; border-radius: 9999px;
+        background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2);
+        color: #22C55E; font-size: 0.725rem; font-family: 'JetBrains Mono', monospace;
+        font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+      }
+      .badge-suspicious {
+        display: inline-flex; align-items: center; gap: 0.25rem;
+        padding: 0.25rem 0.75rem; border-radius: 9999px;
+        background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2);
+        color: #F59E0B; font-size: 0.725rem; font-family: 'JetBrains Mono', monospace;
+        font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+      }
+      .badge-phishing {
+        display: inline-flex; align-items: center; gap: 0.25rem;
+        padding: 0.25rem 0.75rem; border-radius: 9999px;
+        background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2);
+        color: #EF4444; font-size: 0.725rem; font-family: 'JetBrains Mono', monospace;
+        font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body class="bg-cyber-dark text-gray-200 font-body">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
